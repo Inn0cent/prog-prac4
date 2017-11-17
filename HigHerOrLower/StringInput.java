@@ -10,13 +10,22 @@ public class StringInput
     } 
  
  
-    public int newGuess() throws IOException 
+    public int newGuess() //throws IOException 
     {          
             System.out.print( "Please enter your number: " ); 
+            String input = "0";
+            int number = 0;
+            try{
+                input = reader.readLine();
+            } catch (IOException e){
+                System.out.println("You caused an IOException.");
+            }
             
-            String input = reader.readLine();
-            
-            int number = Integer.parseInt(input);
+            try{
+                number = Integer.parseInt(input);
+            } catch (NumberFormatException e){
+                System.out.println("You inputted a letter in your number, your guess is now 0");
+            }
             
             return number;
                                 

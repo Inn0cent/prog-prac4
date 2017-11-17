@@ -9,20 +9,31 @@ public class ComputerPlayer
 {
     int guess;
     int result;
+    int noOfGuesses = 0;
     HiLo game;
         
     public ComputerPlayer(int limit)
     {
-        guess = Integer.toInt(Math.floor(limit/2));
+        int low = 0;
+        int high = limit;
+        guess = (int)(Math.ceil((low+high)/2));
         game = new HiLo(limit);
         while (!game.hasWon()){
+            System.out.println(guess);
             result = game.makeGuess(guess);
             if (result < 0){
-                guess = Math.floor(guess/2);
+                high = guess;
+                guess = (int)(Math.ceil((low+high)/2));
             } else if (result > 0){
-                guess += Math.floor(guess/2);
+                low = guess + 1;
+                guess = (int)(Math.ceil((low+high)/2));
             }
+            noOfGuesses += 1;
         }
+    }
+    
+    public int returnNoOfGuesses(){
+        return noOfGuesses;
     }
    
 

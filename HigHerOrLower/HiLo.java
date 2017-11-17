@@ -25,9 +25,6 @@ public class HiLo
             System.out.println("Lower");
             return -1;
         }
-        if (hasWon()){
-            System.out.println("You won!!!");
-        }
         return 0;
     }
     
